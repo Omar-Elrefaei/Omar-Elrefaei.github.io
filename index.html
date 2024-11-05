@@ -1,8 +1,340 @@
-<html>
+<!-- <html>
 <body>
 <h1>Hello World =D</h1>
 <p>I am curruntly looking to be hired for a 4 months intership. Check out my
   <a href="/Resume-Omar_Elrefaei.pdf">résumé.pdf</a> 
 <p>Stay safe!
+</body>
+</html>
+ -->
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar Elrefaei - Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #2d3748;
+            --secondary-color: #4a5568;
+            --accent-color: #4299e1;
+            --background-color: #ffffff;
+            --light-gray: #f7fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .profile-intro {
+            margin: 0.11rem 0;
+            color: var(--secondary-color);
+        }
+
+        nav {
+            margin: 1rem 0;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+            font-style: italic;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        section {
+            margin: 4rem 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-category {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .education-item {
+            margin-bottom: 2rem;
+        }
+
+        .github-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-card {
+            background: var(--light-gray);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .blog-posts {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .blog-post {
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: var(--light-gray);
+            transition: transform 0.2s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-2px);
+        }
+
+        .read-time {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            nav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Omar Elrefaei</h1>
+            <p class="profile-intro">Software Engineer • Scientific Computing Specialist</p>
+            <div class="contact-info">
+            </div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#blog">Blog</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+<!--                 <a href="#projects">Projects</a> -->
+            </nav>
+        </header>
+
+        <section id="about">
+            <h2>About</h2>
+            <p>Software engineer specializing in scientific computing and performance optimization. Experienced in developing computational tools for economic modeling, optical testing automation, and high-performance computing applications.</p>
+        </section>
+
+        <section id="blog">
+            <h2>Recent Blog Posts</h2>
+            <div class="blog-posts">
+                <article class="blog-post">
+                    <h3><a href="blog/rust-optimization.html">Performance Optimization in Rust</a></h3>
+                    <p>A simple exercise in applying optimization techniques on an interview problem</p>
+<!--                     <span class="read-time">... min read</span> -->
+                </article>
+            </div>
+        </section>
+
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-item">
+                    <h3>Bank of Canada</h3>
+                    <p class="duration">Jan 2023 - Aug 2023</p>
+                    <p class="role">Software Engineer</p>
+                    <ul>
+                        <li>Rearchitected macroeconomic modeling tools in Julia</li>
+                        <li>Implemented higher-order approximations for Dynamic Stochastic economic models</li>
+                        <li>Optimized matrix operations using Fortran LAPACK libraries</li>
+                        <li>Developed graphical report generation capabilities</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Lumentum</h3>
+                    <p class="duration">Sep 2021 - Mar 2022</p>
+                    <p class="role">Optical Testing Software Developer</p>
+                    <ul>
+                        <li>Developed data processing tools for 200,000+ stress-testing results</li>
+                        <li>Reduced runtime by 80% through MySQL transaction parallelization</li>
+                        <li>Achieved 5x speedup in simulation workflows</li>
+                        <li>Built WinForms interface for data management</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Alolom</h3>
+                    <p class="duration">May 2020 - Aug 2020</p>
+                    <p class="role">Project Developer</p>
+                    <ul>
+                        <li>Developed automated Python source-code refactoring tools</li>
+                        <li>Enhanced Arabic language support in Jupyter-Notebook</li>
+                        <li>Deployed JupyterHub using Docker and Kubernetes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <p>Python, Rust, R, Julia, MATLAB, C#, C</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Libraries</h3>
+                    <p>NumPy, SciPy, Pandas, Matplotlib, DataFrames</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <p>Linux, Git, Bash, SSH, Docker, SQL, Jupyter, GitHub CI</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Laboratory</h3>
+                    <p>UV-Vis, SEM, AFM, XRD spectroscopy and microscopy</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>BASc Nanotechnology Engineering</h3>
+                <p>University of Waterloo • 2019 - 2024</p>
+                <p><i>Key Coursework:</i></p>
+                <ul class="coursework">
+                    <li>Programming for Performance (Rust, Multithreading, CUDA)</li>
+                    <li>Numerical Solutions for Differential Equations (Python, NumPy)</li>
+                    <li>Systems Programming and Concurrency (C, Unix)</li>
+                    <li>Computational Molecular Physics (Molecular Dynamics, DFT)</li>
+                </ul>
+            </div>
+        </section>
+
+
+<!--        <section id="projects">
+            <h2>Notable Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <h3>Economic Modeling Framework</h3>
+                    <p>Developed high-performance computational tools for Dynamic Stochastic economic models using Julia and Fortran</p>
+                </article>
+                <article class="project-card">
+                    <h3>Optical Testing Pipeline</h3>
+                    <p>Built automated data processing system for large-scale optical component testing, achieving 80% performance improvement</p>
+                </article>
+                <article class="project-card">
+                    <h3>Arabic Jupyter Enhancement</h3>
+                    <p>Improved Arabic language support in Jupyter ecosystem with automated refactoring tools</p>
+                </article>
+            </div>
+        </section>-->
+
+
+    </div>
+
+    <style>
+        /* Add to existing CSS */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .experience-item {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .duration {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .role {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .project-card {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+        }
+        .coursework {
+        padding-left: 2em;
+        }
+    </style>
 </body>
 </html>

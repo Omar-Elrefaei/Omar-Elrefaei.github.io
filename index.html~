@@ -14,7 +14,21 @@
   <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b0b906e69c9d4b5288973e75f9d9efd9"}'></script><!-- End Cloudflare Web Analytics -->
 	<script data-goatcounter="https://omarelrefaei.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
-  
+	<script>
+        var isExternal = function(url) {
+            return !(location.href.replace("http://", "").replace("https://", "").split("/")[0] === url.replace("http://", "").replace("https://", "").split("/")[0]);
+        }
+
+        var queryString = new URL(window.location).search;
+        document.querySelectorAll("[href]").forEach(link => {
+            if (isExternal(link.href)) {
+                var current = link.href;
+                link.href = current + queryString;
+            }
+        });
+    </script>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Omar Elrefaei - Portfolio</title>

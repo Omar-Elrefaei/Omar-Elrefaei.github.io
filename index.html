@@ -15,9 +15,13 @@
 	<script data-goatcounter="https://omarelrefaei.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 	<script>
+        var isExternal = function(url) {
+            return !(location.href.replace("http://", "").replace("https://", "").split("/")[0] === url.replace("http://", "").replace("https://", "").split("/")[0]);
+        }
+
         var queryString = new URL(window.location).search;
         document.querySelectorAll("[href]").forEach(link => {
-            if (link.href.startsWith("/") ) {
+            if (isExternal(link.href)) {
                 var current = link.href;
                 link.href = current + queryString;
             }

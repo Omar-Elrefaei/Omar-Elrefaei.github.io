@@ -21,7 +21,7 @@
 
         var queryString = new URL(window.location).search;
         document.querySelectorAll("[href]").forEach(link => {
-            if (isExternal(link.href)) {
+            if (!isExternal(link.href)) {
                 var current = link.href;
                 link.href = current + queryString;
             }

@@ -13,10 +13,12 @@
     <!-- Optional: Add line numbers -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
 
+    <link rel="stylesheet" href="https://unpkg.com/missing.css@1.1.3">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Performance Optimization Techniques in Rust: A Case Study</title>
+
     <style>
         :root {
             --primary-color: #2d3748;
@@ -39,37 +41,35 @@
             color: var(--primary-color);
             background-color: var(--background-color);
             max-width: 800px;
-            margin: 0 auto;
+            margin: 1rem auto;
             padding: 2rem;
         }
 
         h1 {
             font-size: 2.5rem;
-            margin-bottom: 2rem;
             color: var(--primary-color);
         }
 
         h2 {
             font-size: 1.8rem;
-            margin: 2rem 0 1rem;
             color: var(--primary-color);
         }
 
         p {
-            margin-bottom: 1.2rem;
+            /* margin-bottom: 0rem; */
         }
 
         pre {
             background: var(--code-bg);
-            padding: 1rem;
-            border-radius: 8px;
+            padding: 0.3rem;
+            border-radius: 2px;
             overflow-x: auto;
-            margin: 1.5rem 0;
+            margin: 0px 0px;
         }
 
         code {
             font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-            font-size: 0.9em;
+            /* font-size: 0.9em; */
         }
 
         ol, ul {
@@ -96,21 +96,32 @@
 <body>
     <article>
         <h1>Performance Optimization Techniques in Rust: A Case Study</h1>
-
+    <div>
         <h2>Introduction</h2>
         <p>In the realm of high-performance computing and systems programming, the ability to optimize code for maximum efficiency is a crucial skill. This case study demonstrates a series of sophisticated optimization techniques applied to a complex numerical problem implemented in Rust. We'll explore how careful analysis, algorithmic improvements, and Rust's powerful features can lead to significant performance gains.</p>
-
         <h2>Problem Statement</h2>
-        <p>We are presented with a numerical sequence analogous to a "number mine." The challenge is to verify the stability of the mine as numbers are extracted. The rules are as follows:</p>
+        <p>We are presented with a sequence of integers and the task of flagging certain elements  that risk crumbling the sequence on itself. The rules are as follows:</p>
         <ol>
             <li>The first 100 numbers are inherently stable.</li>
-            <li>For each subsequent number, it is considered stable if and only if it is the sum of two distinct numbers from the preceding 100 numbers.</li>
+            <li>Each subsequent number is considered stable if it is the sum of two distinct numbers from the preceding 100 numbers.</li>
         </ol>
-        <p>Our task is to efficiently process a large sequence of numbers, identifying unstable extractions that could cause the mine to crumble.</p>
+        <div class="box info crowded">
+        <p class="titlebar">Minified Example</p>
+        <p>For this example we're going to assume the rule is about 5 numbers, instead of 100. Given the following sequence:</p>
+        <pre>40, 62, 55, 65, 95, 102 117, 150, 182, 127</pre>
+        <p>the last number "127" will be flagged out because it is the only one that can not be arrived at by summing two of the previous 5 numbers.</p>
+        </div>
+
+        <p>Our task is to efficiently process a large sequence, flagging out numbers that could cause the sequence to "crumble".</p>
 
         <h2>Initial Implementation</h2>
-        <p>We begin with a straightforward implementation to establish a baseline:</p>
-        <pre><code class="language-rust">fn crumble0(list: &Vec, window_size: usize) -> i32 {
+        <p>We begin with a straightforward implementation to establish a performance baseline:</p>
+    </div>
+
+
+
+        <pre>
+            <code class="language-rust">fn crumble0(list: &Vec, window_size: usize) -> i32 {
     let mut n_crumbled = 0;
     let target_nums = &list[window_size..];
     let windows = list.windows(window_size);
@@ -132,9 +143,9 @@
         }
     }
     n_crumbled
-}</code></pre>
+}</code>
+            </pre>
 
-        <p>This implementation has a time complexity of O(n * m^2), where n is the length of the input list and m is the window size. For each target number, we examine all possible pairs in the preceding window, resulting in \(\binom{m}{2}\) comparisons per number.</p>
 
         <h2>Optimization Strategy 1: Search Space Reduction</h2>
         <p>Our first optimization targets the inefficiency in the pair generation process. We observe that many numbers in each window are too large to form a valid sum with any other number in the window. By filtering these out, we can significantly reduce the search space:</p>

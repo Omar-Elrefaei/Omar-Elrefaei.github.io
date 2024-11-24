@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b0b906e69c9d4b5288973e75f9d9efd9"}'></script><!-- End Cloudflare Web Analytics -->
-        <script data-goatcounter="https://omarelrefaei.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
-
-<!--blog-post-lamified-intoHtml-using-preplexitySnonnet.html -->
-    <!-- highlight.js code syntax -->
-    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/styles/default.min.css" />
-    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script>
-    <!-- Optional: Add line numbers -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-
-    <link rel="stylesheet" href="https://unpkg.com/missing.css@1.1.3">
-
+    <title>Performance Optimization Techniques in Rust: A Case Study</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Performance Optimization Techniques in Rust: A Case Study</title>
+
+    <!-- Cloudflare Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token":"b0b906e69c9d4b5288973e75f9d9efd9"}'></script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://omarelrefaei.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+
+    <!-- // Can't defer because my inline script at the bottom depends on it -->
+    <!-- highlight.js code syntax highlight and line numbering (optional) -->
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/styles/default.min.css" />
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/missing.css@1.1.3">
 
     <style>
         :root {
@@ -27,103 +29,100 @@
             --background-color: #ffffff;
             --light-gray: #f7fafc;
             --code-bg: #f6f8fa;
+            --hljs-code-bg: #f0f0f0;
+
+            /* defaults are 1, and 1.4rem */
+            --density: 0.8;
+            /* affects actual line-hight unless overriden in body and pre|code */
+            --rhythm: 1.4rem;
+            --box-bg: var(--hljs-code-bg);
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, serif;
+            font-size: 1rem;
             line-height: 1.6;
-            color: var(--primary-color);
-            background-color: var(--background-color);
-            max-width: 800px;
+            color: var(--muted-fg);
+            background-color: var(--bg);
+            max-width: 80ch;
             margin: 1rem auto;
-            padding: 2rem;
+            padding: 1rem;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-        }
 
         p {
-            /* margin-bottom: 0rem; */
+            /* margin-bottom: -0.3rem; */
         }
 
         pre {
-            background: var(--code-bg);
+            background: var(--plain-bg);
             padding: 0.3rem;
             border-radius: 2px;
             overflow-x: auto;
-            margin: 0px 0px;
+            border-width: 5px;
+            border-color: red;
+            /* margin: 0px 0px; */
         }
 
         code {
             font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-            /* font-size: 0.9em; */
+            /* for inline monospaced words */
+            background: var(--box-bg);
+            /* background: var(--hljs-code-bg); */
+            padding: 0.1rem 0.2rem;
+            border-radius: 2px;
         }
 
         ol, ul {
-            margin-left: 2rem;
-            margin-bottom: 1.2rem;
+            /* margin-left: 2rem; */
+            /* margin-bottom: 1.2rem; */
         }
-
         li {
-            margin-bottom: 0.5rem;
+            /* margin-bottom: 0.5rem; */
         }
 
-/*        .performance-results {
-            background: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-        }*/
 
-        article {
-            margin-top: 2rem;
-        }
     </style>
 </head>
 <body>
-    <article>
+    <!--blog-post-lamified-intoHtml-using-preplexitySnonnet.html-->
+    <!--Text was then improved manually-->
+    <article class="crowded">
         <h1>Performance Optimization Techniques in Rust: A Case Study</h1>
-    <div>
-        <h2>Introduction</h2>
-        <p>In the realm of high-performance computing and systems programming, the ability to optimize code for maximum efficiency is a crucial skill. This case study demonstrates a series of sophisticated optimization techniques applied to a complex numerical problem implemented in Rust. We'll explore how careful analysis, algorithmic improvements, and Rust's powerful features can lead to significant performance gains.</p>
-        <h2>Problem Statement</h2>
-        <p>We are presented with a sequence of integers and the task of flagging certain elements  that risk crumbling the sequence on itself. The rules are as follows:</p>
-        <ol>
-            <li>The first 100 numbers are inherently stable.</li>
-            <li>Each subsequent number is considered stable if it is the sum of two distinct numbers from the preceding 100 numbers.</li>
-        </ol>
-        <div class="box info crowded">
-        <p class="titlebar">Minified Example</p>
-        <p>For this example we're going to assume the rule is about 5 numbers, instead of 100. Given the following sequence:</p>
-        <pre>40, 62, 55, 65, 95, 102 117, 150, 182, 127</pre>
-        <p>the last number "127" will be flagged out because it is the only one that can not be arrived at by summing two of the previous 5 numbers.</p>
+        <div>
+            <h2>Introduction</h2>
+            <p>In the realm of high-performance computing and systems programming, the ability to optimize code for maximum efficiency is a crucial skill. This case study demonstrates a series of sophisticated optimization techniques applied to a complex numerical problem implemented in Rust. We'll explore how careful analysis, algorithmic improvements, and Rust's powerful features can lead to significant performance gains.</p>
+
+            <h2>Problem Statement</h2>
+            <p>We are presented with a sequence of integers and the task of flagging certain elements  that risk crumbling the sequence on itself. The rules are as follows:</p>
+            <ol>
+                <li>The first 100 numbers are inherently stable.</li>
+                <li>Each subsequent number is considered stable if it is the sum of two distinct numbers from the preceding 100 numbers.</li>
+            </ol>
+            <div class="box info crowded">
+            <p class="titlebar">Minified Example</p>
+            <p>For this example we're going to assume the rule is about 5 numbers, instead of 100. Given the following sequence:</p>
+            <pre>40, 62, 55, 65, 95, 102 117, 150, 182, 127</pre>
+            <p>the last number "127" will be flagged out because it is the only one that can not be arrived at by summing two of the previous 5 numbers.</p>
+            </div>
+
+            <p>Our task is to efficiently process a large sequence, flagging out numbers that could cause the sequence to "crumble".</p>
+
+            <h2>Initial Implementation</h2>
+            <p>We begin with a straightforward implementation to establish a performance baseline:</p>
         </div>
 
-        <p>Our task is to efficiently process a large sequence, flagging out numbers that could cause the sequence to "crumble".</p>
-
-        <h2>Initial Implementation</h2>
-        <p>We begin with a straightforward implementation to establish a performance baseline:</p>
-    </div>
-
-
-
-        <pre>
-            <code class="language-rust">fn crumble0(list: &Vec, window_size: usize) -> i32 {
+        <pre><code class="language-rust"
+>fn crumble0(list: &Vec) -> i32 {
     let mut n_crumbled = 0;
+    let window_size = 100;
+    // list of numbers we need to check, skip the first 100
     let target_nums = &list[window_size..];
+    // iterator to represent a sliding window of size 100
     let windows = list.windows(window_size);
 
     for (&num, window) in zip(target_nums, windows) {
@@ -139,42 +138,74 @@
 
         if !found {
             n_crumbled += 1;
-            println!("{} will crumble", num);
+            println!("{} is unsafe", num);
         }
     }
     n_crumbled
-}</code>
-            </pre>
-
+}
+            </code></pre>
+        <p>
+            After the initial setup, this naive solution goes as follow:
+        </p>
+        <ol>
+            <li>Generate a sliding window `windows` over the entire sequence</li>
+            <li>Pair up each target number with the list of previous 100 numbers (the sliding window)</li>
+            <li>For each pair of numbers in the window, check if their sum equals the target number</li>
+            <li>If none of the pairs sums to the target, mark that number as unsafe</li>
+        </ol>
+        <div class="box info crowded">
+            <p class="titlebar">Benchmarking with Hyperfine</p>
+            <p>Throughout this post we'll be measuring the performance of each optimization using <a href="https://github.com/sharkdp/hyperfine"><code>hyperfine</code></a>, a command-line benchmarking tool. This allows us to get precise execution time measurements with statistical variance. Here's an example of hyperfine output:</p>
+<pre>
+> hyperfine ./target/release/crumble0
+Benchmark 1: ./target/release/crumble0
+  Time (mean ± σ):     156.3 ms ±   3.2 ms    [User: 156.1 ms, System: 0.1 ms]
+  Range (min … max):   149.8 ms … 163.4 ms    20 runs
+</pre>
+        </div>
 
         <h2>Optimization Strategy 1: Search Space Reduction</h2>
-        <p>Our first optimization targets the inefficiency in the pair generation process. We observe that many numbers in each window are too large to form a valid sum with any other number in the window. By filtering these out, we can significantly reduce the search space:</p>
-        <pre><code class="language-rust">fn crumble1(list: &Vec, window_size: usize) -> i32 {
+        <p>
+            Our first implementation is pretty inefficient if you think about it. For each target number,worst case, we're trying every possible pair in a window of 100 numbers. If we work through the math, that's (100 choose 2) = 4,950 pairs we're checking for each target! With thousands of target numbers to process.
+            <br>
+            Here's a idea: for a specific window some numbers are way too big to ever be part of a valid sum, so let's cut them out first and save some CPU time in the generation of pairs. Obviously any number larger than our target can be filtered out.
+            <br>
+            We can filter even more elements if we take into consideration the smallest number in the window. For example, if our target is 80 and the smallest number in our window is 20, we can throw away everything bigger than 60 (as there is no chance anything bigger that 60 can contribute to a valid sum). This way, we are minimizing our window before running <code>combinations(2)</code>
+        </p>
+        <p>
+            Lets see how we can implement this:
+        </p>
+        <pre><code class="language-rust">fn crumble1(list: &Vec) -> i32 {
     // ... (setup code omitted for brevity)
     for (&num, window) in zip(target_nums, windows) {
-        let mut found = false;
-        let window = window.iter();
-        let smallest = *window.clone().min().unwrap();
+        //...
+        let smallest = *window.min().unwrap();
         let window_filtered = window.filter(|&&x| x <= (num - smallest));
 
         for pair in window_filtered.combinations(2) {
-            if pair[0] + pair[1] == num {
-                found = true;
-                break;
-            }
+            // ...
         }
-        // ... (rest of the function)
-    }
-    n_crumbled
-}</code></pre>
-<h2>Optimization Strategy 2: Exploiting Data Patterns</h2>
-<p>Through careful analysis of the dataset, we discovered a heuristic that provides a substantial performance boost:</p>
-<pre><code class="language-rust">fn crumble2(list: &Vec, window_size: usize) -> i32 {
+</code></pre>
+
+        <p>
+        Using <code>hyperfine</code> again show this version executing in about <code>83.7 ms</code>
+        This optimization reduced execution time by ~47% compared to our initial implementation, demonstrating the impact of intelligently reducing the search space before performing hot loops.</p>
+
+        <h2>Optimization Strategy 2: Exploiting Data Patterns</h2>
+        <p>
+        The next improvement comes from analyzing the data patterns in our sequence. During development I had some print logging statements and I noticed a pattern.
+        I found that frequently the largest and smallest numbers in the filtered window summed to the given target number.
+        So, we could replace most cases of the expensive combinations iteration with a simple early return check of <code>min + max</code> of each window.
+        </p>
+
+        <p>By checking this special case first, we can avoid the expensive iterations in many cases. Here's the gist of what would be added:</p>
+
+
+        <pre><code class="language-rust">fn crumble2(list: &Vec) -> i32 {
     // ... (setup code omitted for brevity)
     for (&num, window) in zip(target_nums, windows) {
-        let mut found = false;
-        let window = window.iter();
-        let smallest = *window.clone().min().unwrap();
+        //...
+        let smallest = *window.min().unwrap();
         let window_filtered = window.filter(|&&x| x <= (num - smallest));
         let largest = window_filtered.clone().max().copied().unwrap_or_default();
 
@@ -186,23 +217,26 @@
     n_crumbled
 }</code></pre>
 
-<p>This optimization exploits the observation that the sum of the smallest and largest numbers in the filtered window often satisfies our condition. By checking this first, we avoid the expensive combinations check in many cases. While this is a heuristic based on the specific dataset and not a general algorithm, it demonstrates the importance of understanding the characteristics of your data for effective optimization.</p>
+        <p>This turned out indeed a huge improvement, benchmarking shows that it executes in about <code>7 ms</code>.
 
-<h2>Optimization Strategy 3: Parallelization</h2>
-<p>For our final optimization, we leverage Rust's excellent concurrency support using the Rayon library:</p>
-<pre><code class="language-rust">fn crumble3(list: &Vec, window_size: usize) {
-    let target_nums = &list[window_size..];
+        While this is a heuristic based on the specific dataset and not a general algorithm, it demonstrates the importance of understanding the characteristics of our data for effective optimization.</p>
+
+
+        <h2>Optimization Strategy 3: Parallelization</h2>
+        <p>For our final optimization, we leverage Rust's excellent concurrency support using the Rayon library:</p>
+<pre><code class="language-rust">fn crumble3(list: &Vec) {
+    // ... (setup code omitted for brevity)
     let windows = list.par_windows(window_size);
     windows.zip(target_nums).for_each(|(window, &num)| {
-        // ... (logic similar to crumble2)
+        // ... (filter logic similar to crumble2)
     });
 }</code></pre>
 
-<p>This implementation utilizes Rayon's parallel iterators to distribute the workload across multiple CPU cores. The `par_windows` method creates a parallel iterator over the sliding windows, and `for_each` applies our stability check to each window concurrently.</p>
+<p>This implementation utilizes Rayon's parallel iterators to distribute the workload across multiple CPU cores. The <code>par_windows</code> method creates a parallel iterator over the sliding windows, and <code>for_each</code> applies our stability check to each window concurrently.</p>
 
         <h2>Performance Analysis</h2>
-        <div class="performance-results">
-            <p> We conducted rigorous benchmarks using the `hyperfine` tool on a 4-core ThinkPad T460s. The results demonstrate the cumulative impact of our optimizations:</p>
+        <div>
+            <p> Benchmarks were conducted using a 4-core ThinkPad T460s. The summary below demonstrate the impact of our optimizations:</p>
             <ol>
                 <li>Naive approach (crumble0): 156.3 ms ± 3.2 ms</li>
                 <li>Search space reduction (crumble1): 83.7 ms ± 3.0 ms</li>
@@ -214,7 +248,7 @@
         </div>
 
         <h2>Conclusion</h2>
-        <p>This case study demonstrates a systematic approach to performance optimization in Rust:</p>
+        <p>This case study demonstrates a systematic approach to performance optimizations:</p>
         <ol>
             <li><strong>Algorithmic Improvements:</strong> By reducing the search space and exploiting data patterns, we achieved significant speedups without sacrificing correctness.</li>
             <li><strong>Data-Driven Optimization:</strong> Understanding the characteristics of our dataset led to a heuristic that dramatically improved performance.</li>
@@ -226,12 +260,12 @@
     </article>
 
     <script>
-        // Add syntax highlighting if needed
-        document.querySelectorAll('pre code').forEach((block) => {
-            hljs.highlightElement(block);
-        });
+        // BRUH GPT MY ASS COMPLICATING THINGS. FOUND ONE LINE IN DOCS ACCIDENTALLY
+        // document.querySelectorAll('pre code').forEach((block) => {
+        //     hljs.highlightElement(block);
+        // });
+        hljs.highlightAll();
         hljs.initLineNumbersOnLoad();
-
     </script>
 </body>
 </html>

@@ -39,9 +39,7 @@
         }
 
         * {
-            /* margin: 0; */
-            /* padding: 0; */
-            box-sizing: border-box;
+
         }
 
         *:target{
@@ -50,7 +48,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',  serif;
-            /* line-height: 1.6; */
+            line-height: 1.6;
             color: var(--primary-color);
             background-color: var(--background-color);
         }
@@ -82,9 +80,6 @@
             color: var(--muted-accent);
         }
 
-        section {
-            margin: 4rem 0;
-        }
 
         .skills-grid {
             display: grid;
@@ -136,41 +131,41 @@
     <div class="container">
         <header>
 
-            <h1> Omar Elrefaei</h1>
-            <p class="profile-intro">Software Engineer • Scientific Computing Specialist</p>
-            <div>
-            </div>
-            <nav>
+            <h1>Omar Elrefaei</h1>
+            <p>Taming Computers  •  Crafting Code</p>
+            <!-- <nav>
                 <a href="#about">About</a>
                 <a href="#blog">Blog</a>
                 <a href="#experience">Experience</a>
                 <a href="#skills">Skills</a>
                 <a href="#education">Education</a>
-                                <!-- <a href="#projects">Projects</a> -->
-            </nav>
+                <a href="#projects">Projects</a>
+            </nav> -->
         </header>
 
-        <section id="about">
+        <section>
             <h2>About</h2>
-            <p>Software engineer specializing in scientific computing and performance optimization. Experienced in
-                developing computational tools for economic modeling, optical testing automation, and high-performance
-                computing applications.</p>
+            <p>
+                I am a software engineer specializing in high-performance computing and scientific applications. With a background in nanotechnology engineering, I combine technical expertise with practical software development skills to create efficient, scalable solutions for complex computational challenges.
+                <span class="aestheticbreak"></span>
+                I enjoy working with teams who care about the usability of their software and are deliberate about their craft. I'm particularly productive working with Python or Julia, but I also have some exposure to C and Rust.
+            </p>
+            <div class="info chip padding crowded">
+                I'm available for full-time or contract work, contact me at
+                <b><a href="mailto:el.omar.dev@gmail.com">el.omar.dev@gmail.com</a></b>
+                and lets see if I can be of benefit to your project.
+            </div>
         </section>
 
         <section id="blog">
-            <h2>Recent Blog Posts</h2>
+            <h2>Blog Posts</h2>
             <div class="blog-posts">
                 <article class="blog-post card">
-                    <h3><a href="/blog/rust-optimization.html">Performance Optimization in Rust</a></h3>
+                    <h3><a href="/blog/rust-optimization.html">Performance Optimization in Rust: A Case Study</a></h3>
                     <p>A simple exercise in applying optimization techniques on an interview problem</p>
                     <!-- <span class="read-time">... min read</span> -->
                 </article>
 
-                <article class="blog-post card">
-                    <h3><a href="/blog/rust-optimization.html">Performance Optimization in Rust</a></h3>
-                    <p>A simple exercise in applying optimization techniques on an interview problem</p>
-<!--                     <span class="read-time">... min read</span> -->
-                </article>
             </div>
         </section>
 
@@ -206,7 +201,6 @@
                         <li>Built WinForms interface for data management</li>
                     </ul>
                 </div>
-
                 <div class="experience-item card">
                     <p>
                         <h3 class="inline">Alolom</h3>
@@ -220,6 +214,7 @@
                         <li>Deployed JupyterHub using Docker and Kubernetes</li>
                     </ul>
                 </div>
+
             </div>
         </section>
 

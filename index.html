@@ -246,20 +246,8 @@
         </section>
     </div>
 
+    <footer id="footer-js"></footer>
+    <script src="../main.js"></script>
 
 </body>
-	<script>
-        var isExternal = function(url) {
-            return !(location.href.replace("http://", "").replace("https://", "").split("/")[0] === url.replace("http://", "").replace("https://", "").split("/")[0]);
-        }
-
-        var queryString = new URL(window.location).search;
-        document.querySelectorAll("[href]").forEach(link => {
-            if (!isExternal(link.href)) {
-                var current = link.href;
-                link.href = current + queryString;
-            }
-        });
-    </script>
-
 </html>

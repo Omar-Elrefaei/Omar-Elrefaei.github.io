@@ -1,0 +1,13 @@
+[package]
+name = "crumble"
+version = "0.1.0"
+edition = "2021"
+
+[profile.release]
+#lto = true
+#strip = true 
+#debug = true
+
+[dependencies]
+itertools = "0.12.1"
+rayon = "1.8.1"

@@ -114,10 +114,13 @@
 
         .experience-grid {
             display: grid;
-            gap: 2rem;
+            /* ah...gap applies to child elements of grid. 
+            without grid, I need to enable margin in the child-item-elm */
+            gap: var(--gap);
         }
 
         .experience-item{
+            /* margin: var(--gap); */
             /* display: grid; */
         }
         .duration {
@@ -168,6 +171,60 @@
 
             </div>
         </section>
+        <section id="opensource"  class="crowded">
+            <h2>Open Source Contributions</h2>
+            <div class="experience-grid">
+                <div class="card">
+                    <p>
+                        <!-- <span class="duration float:right">Nov 2024</span> -->
+                        <!-- <span class="chip ok">Julia</span> -->
+                        <h3 class="inline">QuantumSymbolics</h3> — Julia
+                    </p>
+                    <ul>
+                        <li>
+                            Fix reported method piracies and ambiguities (
+                            <a href="https://github.com/QuantumSavory/QuantumSymbolics.jl/issues/65">Issue</a>, 
+                            <a href="https://github.com/QuantumSavory/QuantumSymbolics.jl/pull/85">Pull Request</a>
+                            )
+                            <span class="chip warn">Paid</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <p><h3 class="inline">Molly</h3> (molecular dynamics) — Julia </p>
+                    <ul>
+                        <li>
+                            Add a CUDA GPU kernel for SHAKE constraints (
+                            <a href="https://github.com/JuliaMolSim/Molly.jl/pull/175">Pull Request</a> )
+                        </li>
+                    </ul>
+                </div>
+                
+                
+                <div class="card">
+                    <p><h3 class="inline">DataDeps</h3> — Julia </p>
+                    <ul>
+                        <li>
+                            Tweak type inference to improve latency (
+                            <a href="https://github.com/oxinabox/DataDeps.jl/pull/165">Pull Request</a> )
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <p><h3 class="inline">TableTransforms</h3> — Julia </p>
+                    <ul>
+                        <li>
+                            Implement Rename table transformation (
+                            <a href="https://github.com/JuliaML/TableTransforms.jl/pull/15">Pull Request</a> )
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
 
 
         <section id="experience">

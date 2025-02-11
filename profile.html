@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script data-goatcounter="https://omar-elrefaei.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar Elrefaei</title>
+    <title>Links</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .links-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-name {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .profile-title {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+
+        .link-item {
+            display: block;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            color: #2c3e50;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            user-select: text;
+        }
+
+        .link-item:hover {
+            background-color: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .icon {
+            margin-right: 10px;
+        }
+
+        .icon img {
+            width: 16px;
+            height: 16px;
+            vertical-align: top;
+        }
+        .copy-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.6s ease;
+            padding: 5px 10px;
+            background: #e9ecef;
+            border: 1px solid #2c3e50;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .copy-button:active{
+        transform: scale(0.99);
+        background-color: #d1d6db;
+        transition: all 0.9s ease;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="links-container">
+        <div class="profile-header">
+            <h1 class="profile-name">Omar Elrefaei</h1>
+            <!-- <p class="profile-title">Your Professional Title</p> -->
+        </div>
+
+        <a href="https://www.linkedin.com/in/omar-elrefaei/" class="link-item">
+            <span class="icon"><img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" alt="LinkedIn Logo"></span>LinkedIn
+        </a>
+
+        <a href="https://github.com/Omar-Elrefaei/" class="link-item">
+            <span class="icon"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo"></span>GitHub
+        </a>
+
+        <a href="https://omar-elrefaei.github.io/" class="link-item">
+            <span class="icon">🌐</span>Personal Website
+        </a>
+
+        <!-- <a href="https://medium.com/@yourusername" class="link-item">
+            <span class="icon">📝</span>Blog/Articles
+        </a> -->
+        <span class="link-item" style="position: relative;">
+            <span class="icon"><img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" alt="Gmail Logo"></span>Email: elrefaei.omar@gmail.com
+            <button onclick="copyEmail()" class="copy-button">Copy</button>
+        </>
+        <script>
+            function copyEmail() {
+                navigator.clipboard.writeText('elrefaei.omar@gmail.com');
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            }
+        </script>
+        </span>
+        <!-- <a href="mailto:elrefaei.omar@gmail.com" class="link-item"> -->
+            <!-- <span class="icon"><img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" alt="Gmail Logo"></span>Email Contact -->
+        <!-- </a> -->
+
+        <span class="link-item" style="position: relative;">
+            <span class="icon">📄</span>AAAAAAAAADownload PDF Resume
+            <button onclick="window.location.href='path/to/your/resume.pdf'" class="copy-button">Download</button>
+        </span>
+    </div>
+</body>
+</html>

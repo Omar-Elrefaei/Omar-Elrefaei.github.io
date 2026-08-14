@@ -102,7 +102,7 @@
         }
 
         .card {
-            padding: 0rem 1.5rem;
+            padding: 0.6rem 1.5rem;
             border-radius: 8px;
             background: var(--box-bg);
             transition: transform 0.2s ease;
@@ -123,8 +123,52 @@
             /* margin: var(--gap); */
             /* display: grid; */
         }
+
+        .opensource-secondary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--gap);
+        }
+
+        #opensource .card > :first-child {
+            margin-block-start: 0;
+        }
+
+        #opensource .card > :last-child {
+            margin-block-end: 0;
+        }
+
         .duration {
             color: var(--accent);
+        }
+
+        .experience-heading {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.25rem 1rem;
+        }
+
+        .experience-heading > .duration {
+            margin-inline-start: auto;
+            white-space: nowrap;
+        }
+
+        footer {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        footer :where(p, a, em, span, small) {
+            font-size: inherit;
+        }
+
+        @media (max-width: 600px) {
+            .experience-heading > .duration {
+                flex-basis: 100%;
+                margin-inline-start: 0;
+            }
         }
 
 
@@ -148,7 +192,7 @@
 
         <section>
             <h2>About</h2>
-            <p>
+             <p>
                 I am a software engineer specializing in high-performance computing and scientific applications. With a background in nanotechnology engineering, I combine technical expertise with practical software development skills to create efficient, scalable solutions for complex computational challenges.
                 <span class="aestheticbreak"></span>
                 I enjoy working with teams who care about the usability of their software and are deliberate about their craft. I'm particularly productive working with Python or Julia, but I also have some exposure to C and Rust.
@@ -160,108 +204,151 @@
             </div>
         </section>
 
-        <section id="opensource"  class="crowded">
-            <h2>Open Source Contributions</h2>
-            <div class="experience-grid">
-                <div class="card">
-                    <p>
-                        <!-- <span class="duration float:right">Nov 2024</span> -->
-                        <!-- <span class="chip ok">Julia</span> -->
-                        <h3 class="inline">QuantumSymbolics</h3> — Julia
-                    </p>
-                    <ul>
-                        <li>
-                            Fix reported method piracies and ambiguities (
-                            <a href="https://github.com/QuantumSavory/QuantumSymbolics.jl/issues/65">Issue</a>, 
-                            <a href="https://github.com/QuantumSavory/QuantumSymbolics.jl/pull/85">Pull Request</a>
-                            )
-                            <span class="chip warn">Paid</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <p><h3 class="inline">Molly</h3> (molecular dynamics) — Julia </p>
-                    <ul>
-                        <li>
-                            Add a CUDA GPU kernel for SHAKE constraints (
-                            <a href="https://github.com/JuliaMolSim/Molly.jl/pull/175">Pull Request</a> )
-                        </li>
-                    </ul>
-                </div>
-                
-                
-                <div class="card">
-                    <p><h3 class="inline">DataDeps</h3> — Julia </p>
-                    <ul>
-                        <li>
-                            Tweak type inference to improve latency (
-                            <a href="https://github.com/oxinabox/DataDeps.jl/pull/165">Pull Request</a> )
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <p><h3 class="inline">TableTransforms</h3> — Julia </p>
-                    <ul>
-                        <li>
-                            Implement Rename table transformation (
-                            <a href="https://github.com/JuliaML/TableTransforms.jl/pull/15">Pull Request</a> )
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </section>
-
-
-
         <section id="experience">
             <h2>Professional Experience</h2>
             <div class="experience-grid">
-                <div class="experience-item card">
-                    <p>
-                        <h3 class="inline">Bank of Canada</h3>
-                        <span class="duration float:right">Jan 2023 - Aug 2023</span>
-                        <br>
-                        <em>Software Engineer</em>
-                    </p>
+                <article class="experience-item card">
+                    <div class="experience-heading crowded">
+                        <div class="packed">
+                            <div><h3 class="inline">Habitat</h3> <span class="chip warn">Contract</span></div>
+                            <em>QA Training for AI Coding Agents</em>
+                        </div>
+                        <span class="duration">Nov 2025 - Feb 2026</span>
+                    </div>
+                    <ul>
+                        <li>Built software-engineering benchmarks to evaluate AI coding agents against real historical bug fixes</li>
+                        <li>Translated PRs into coding challenges capturing explicit requirements and implicit repository constraints</li>
+                        <li>Created Claude Code skills that gave contributors fast, local feedback before submitting their work</li>
+                    </ul>
+                </article>
+                <article class="experience-item card">
+                    <div class="experience-heading crowded">
+                        <div class="packed">
+                            <div><h3 class="inline">JuliaEarth</h3> <span class="chip warn">Contract</span></div>
+                            <em>Software Engineer</em>
+                        </div>
+                        <span class="duration">Mar 2025 - May 2025</span>
+                    </div>
+                    <ul>
+                        <li>Built a parser converting geospatial reference data from WKT2 into JSON</li>
+                        <li>Validated parser output against a JSON Schema to ensure data integrity</li>
+                        <li>Vendored the dataset into the codebase, eliminating the need for a large dependency</li>
+                    </ul>
+                </article>
+                <article class="experience-item card">
+                    <div class="experience-heading crowded">
+                        <div class="packed">
+                            <div><h3 class="inline">National Science Foundation</h3> <span class="chip warn">Contract</span></div>
+                            <em>Software Engineer</em>
+                        </div>
+                        <span class="duration">Nov 2024 - Dec 2024</span>
+                    </div>
+                    <ul>
+                        <li>Developed fine-grained benchmarks that automatically detected performance regressions in a quantum-information software package (<a href="https://github.com/QuantumSavory/QuantumSymbolics.jl">QuantumSymbolics.jl</a>), fixing reported method piracies and ambiguities (<a href="https://github.com/QuantumSavory/QuantumSymbolics.jl/issues/65">Issue</a>, <a href="https://github.com/QuantumSavory/QuantumSymbolics.jl/pull/85">Pull Request</a>)</li>
+                        <li>Integrated static analysis and runtime validation into the project's test suite</li>
+                    </ul>
+                </article>
+                <article class="experience-item card">
+                    <div class="experience-heading crowded">
+                        <div class="packed">
+                            <div><h3 class="inline">Bank of Canada</h3> <span class="chip ok">Co-op</span></div>
+                            <em>Software Engineer</em>
+                        </div>
+                        <span class="duration">Jan 2023 - Aug 2023</span>
+                    </div>
                     <ul>
                         <li>Contributed to rearchitecting the Dynare macroeconomic modeling suite in Julia</li>
                         <li>Implemented higher-order approximations for Dynamic Stochastic economic models</li>
                         <li>Optimized specialized matrix operations by interfacing with Fortran LAPACK</li>
                         <li>Developed custom graphical reporting capabilities for economic forecasting</li>
                         <li>Aided in deployment of a legacy Matlab codebase on a SLURM HPC cluster.</li>
+                        <li>Drafted engineering recommendations regarding the adoption of automatic-differentiation libraries</li>
+                        <li>Improved the reliability of numerical routines through comprehensive unit testing</li>
                     </ul>
-                </div>
-                <div class="experience-item card">
-                    <p>
-                        <h3 class="inline">Neophotonics (now Lumentum)</h3>
-                        <span class="duration float:right">Sep 2021 - Mar 2022</span>
-                        <br>
-                        <em>Optical Testing Software Developer</em>
-                    </p>
+                </article>
+                <article class="experience-item card">
+                    <div class="experience-heading crowded">
+                        <div class="packed">
+                            <div><h3 class="inline">Neophotonics (now Lumentum)</h3> <span class="chip ok">Co-op</span></div>
+                            <em>Optical Testing Software Developer</em>
+                        </div>
+                        <span class="duration">Sep 2021 - Mar 2022</span>
+                    </div>
                     <ul>
                         <li>Developed data processing tools for 200,000+ stress-testing results using C#</li>
                         <li>Achieved 80% reduction in ingress time by batching MySQL transactions.</li>
                         <li>Achieved 5x speedup in simulation workflows</li>
                         <li>Built WinForms interface for data management</li>
+                        <li>Developed fail-safe parsing logic that preserved data integrity when importing noncompliant files</li>
+                        <li>Automated colleagues' Excel workflows using Python and Pandas</li>
+                        <li>Accelerated hardware-design work by exposing the simulation toolkit through a Python API</li>
                     </ul>
-                </div>
-                <div class="experience-item card">
-                    <p>
-                        <h3 class="inline">Alolom</h3>
-                        <span class="duration float:right">May 2020 - Aug 2020</span>
-                        <br>
-                        <em>Project Developer</em>
-                    </p>
+                </article>
+                <article class="experience-item card">
+                    <div class="experience-heading crowded">
+                        <div class="packed">
+                            <div><h3 class="inline">Alolom</h3> <span class="chip ok">Co-op</span></div>
+                            <em>Project Developer</em>
+                        </div>
+                        <span class="duration">May 2020 - Aug 2020</span>
+                    </div>
                     <ul>
                         <li>Developed automated Python source-code refactoring tools</li>
                         <li>Enhanced Arabic language support in Jupyter-Notebook</li>
                         <li>Deployed JupyterHub using Docker and Kubernetes</li>
                     </ul>
-                </div>
+                </article>
 
+            </div>
+        </section>
+
+        <section id="opensource">
+            <h2>Open Source Contributions</h2>
+            <div class="experience-grid">
+                <article class="card">
+                    <div class="experience-heading crowded">
+                        <div><h3 class="inline">Molly</h3> <span class="chip info">Featured</span></div>
+                        <span class="duration">Julia</span>
+                    </div>
+                    <ul>
+                        <li>Implemented a CUDA GPU kernel for SHAKE molecular constraints in Molly, a molecular-dynamics package (<a href="https://github.com/JuliaMolSim/Molly.jl/pull/175">Pull Request</a>)</li>
+                    </ul>
+                </article>
+                <div class="opensource-secondary-grid">
+                    <article class="card crowded">
+                        <div class="experience-heading">
+                            <h3 class="inline">DataDeps</h3>
+                            <span class="duration">Julia</span>
+                        </div>
+                        <p>Improved latency by adjusting type inference (<a href="https://github.com/oxinabox/DataDeps.jl/pull/165">Pull Request</a>)</p>
+                    </article>
+                    <article class="card crowded">
+                        <div class="experience-heading">
+                            <h3 class="inline">TableTransforms</h3>
+                            <span class="duration">Julia</span>
+                        </div>
+                        <p>Implemented the <code>Rename</code> table transformation (<a href="https://github.com/JuliaML/TableTransforms.jl/pull/15">Pull Request</a>)</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="experience-grid">
+                <div class="experience-item card">
+                    <div class="experience-heading crowded">
+                        <div class="packed">
+                            <h3 class="inline">University of Waterloo</h3><br>
+                            <em>B.A.Sc. in Nanotechnology Engineering</em>
+                        </div>
+                        <span class="duration">2024</span>
+                    </div>
+                    <ul>
+                        <li>Capstone: helped develop a thermal-management system for electric-vehicle batteries operating in subarctic climates, using carbon-nanoparticle-induced resistive heating within a wax-based insulation layer</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -288,11 +375,29 @@
                     <h3>Biochemistry</h3>
                     <p>PCR, Gel Electrophoresis, Microfluidics</p>
                 </div>
+                <div class="card">
+                    <h3>Additional</h3>
+                    <p>SQL, Linux, CUDA/GPU programming, flame-graph profiling, Valgrind</p>
+                </div>
             </div>
         </section>
     </div>
 
-    <footer id="footer-js"></footer>
+    <footer id="footer-js">
+        <a href="../">Home</a>  —
+        <a href="https://github.com/omar-elrefaei">Github</a> —
+        <a href="https://linkedin.com/in/omar-elrefaei/">Linkedin</a>
+        <span class="aestheticbreak"></span>
+        <span class="aestheticbreak"></span>
+        <span class="aestheticbreak"></span>
+        <a href="mailto:el.omar.dev@gmail.com">Contact me at: el.omar.dev@gmail.com</a>
+        <span class="aestheticbreak"></span>
+        Site styled with care using <a href="https://missing.style/">missing.css</a>
+        <p>&copy; <span id="footer-year">2026</span> Omar Elrefaei — <em>Taming Computers • Crafting Code</em></p>
+    </footer>
+    <script>
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+    </script>
     <script src="../main.js"></script>
 
 </body>
